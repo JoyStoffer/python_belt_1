@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Travel Dashboard</title>
+  </head>
+  <body>
+    <p>
+      <a href="{% url 'logout' %}">Logout</a>
+    </p>
+    <h3>Hello,{{ user.name }} </h3>
+
+    <h4>Your Trip Schedules</h4>
+    <table>
+      <tr>
+        <th>Destination</th>
+        <th>Travel Start Date</th>
+        <th>travel End Date</th>
+        <th>Plan</th>
+      </tr>
+      <tr>
+
+        <td><a href="#">{{traveler.destination}}</a></td>
+        <td>{{traveler.travel_start|date:"M d, Y"}}</td>
+        <td>{{traveler.travel_end|date:"M d, Y"}}</td>
+        <td>{{traveler.planner}}</td>
+      </tr>
+    </table>
+    <h4>Other User's Travel Plans</h4>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Destination</th>
+        <th>Travel Start Date</th>
+        <th>travel End Date</th>
+        <th>Do you want to Join?</th>
+      </tr>
+      <tr>
+
+        <td>{{user.name}}</td>
+        <td><a href="#">{{traveler.destination}}</a></td>
+        <td>{{traveler.travel_start|date:"M d, Y"}}</td>
+        <td>{{traveler.travel_end|date:"M d, Y"}}</td>
+        <td>{{traveler.buddy.join()}}</td>
+      </tr>
+    </table>
+
+    <a href="{% url 'add_trip' %}">Add Travel Plan</a>
+  </body>
+</html>
